@@ -11,7 +11,7 @@ import bg from "../../../assets/bg.png";
 import axios from "axios";
 import { useState } from "react";
 
-export function Login() {
+export function SignUp() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
@@ -24,17 +24,14 @@ export function Login() {
       },
     };
     try {
-      const login = await axios.post(
-        "https://todo-list-api-7llo.onrender.com/login",
+      await axios.post(
+        "https://todo-list-api-7llo.onrender.com/user",
         data,
         axiosConfig
       );
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${login.data.token}`;
-      console.log(login.data.token);
       setErrorMessage("");
-      navigate("/tasks");
+      alert("Usuário cadastrado com sucesso.");
+      navigate("/");
     } catch (error) {
       setErrorMessage(error.response.data.message);
       console.log(error.response.data.message);
@@ -43,15 +40,28 @@ export function Login() {
 
   return (
     <HomeContainer>
+      <img src={bg} alt="" />
+
       <ContentContainer>
         <header>
-          <h3>Acesse a plataforma</h3>
+          <h3>Faça seu Cadastro</h3>
           <p>
-            Faça o login ou <Link to="/signup">registre-se</Link> para começar a
-            organizar a sua vida.
+            Transforme sua vida em uma lista de conquistas. Cadastre-se agora e
+            comece a traçar seu caminho para o sucesso!.
+          </p>
+          <p>
+            Caso já tenha cadastro, faça o seu login <Link to="/">aqui</Link>.
           </p>
         </header>
         <div className="form">
+          <FormGroup>
+            <label htmlFor="">Nome</label>
+            <input
+              type="text"
+              {...register("nome")}
+              placeholder="digite o seu nome"
+            />
+          </FormGroup>
           <FormGroup>
             <label htmlFor="">E-mail</label>
             <input
@@ -70,13 +80,12 @@ export function Login() {
           </FormGroup>
         </div>
         <ButtonLogin onClick={() => handleSubmit(onsubmit)()} type="submit">
-          Login
+          Cadastrar
         </ButtonLogin>
         <SpanError className={errorMessage === "" ? "" : "active"}>
           {errorMessage}
         </SpanError>
       </ContentContainer>
-      <img src={bg} alt="" />
     </HomeContainer>
   );
 }
