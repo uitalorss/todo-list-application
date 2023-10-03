@@ -1,13 +1,13 @@
-import { BrowserRouter } from "react-router-dom";
 import { GlobalStyled } from "./styles/global";
-import { Router } from "./router";
+import AuthProvider from "./Contexts/AuthProvider";
+import { Routes } from "./Routes";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Router />
+    <AuthProvider>
+      <Routes />
       <GlobalStyled />
-    </BrowserRouter>
+    </AuthProvider>
   );
 }
 

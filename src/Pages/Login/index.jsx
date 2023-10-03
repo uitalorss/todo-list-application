@@ -10,10 +10,12 @@ import { useNavigate, Link } from "react-router-dom";
 import bg from "../../../assets/bg.png";
 import axios from "axios";
 import { useState } from "react";
+import { useAuth } from "../../Contexts/AuthProvider";
 
 export function Login() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const { setToken } = useAuth();
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -29,12 +31,9 @@ export function Login() {
         data,
         axiosConfig
       );
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${login.data.token}`;
-      console.log(login.data.token);
+      setToken(login.data.token);
       setErrorMessage("");
-      navigate("/tasks");
+      navigate("/dashboard");
     } catch (error) {
       setErrorMessage(error.response.data.message);
       console.log(error.response.data.message);
