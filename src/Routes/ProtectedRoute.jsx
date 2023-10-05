@@ -3,9 +3,9 @@ import { useAuth } from "../Contexts/AuthProvider";
 import { Dashboard } from "../Pages/Dashboard";
 
 export const ProtectedRoute = () => {
-  const { token } = useAuth();
+  const { authenticated } = useAuth();
 
-  if (!token) {
+  if (!authenticated) {
     return <Navigate to="/" />;
   }
   return <Dashboard />;

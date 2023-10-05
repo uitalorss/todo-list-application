@@ -15,7 +15,7 @@ import { useAuth } from "../../Contexts/AuthProvider";
 export function Login() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const { setToken } = useAuth();
+  const { setToken, setAuthenticated } = useAuth();
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -31,6 +31,7 @@ export function Login() {
         data,
         axiosConfig
       );
+      setAuthenticated(login.status);
       setToken(login.data.token);
       setErrorMessage("");
       navigate("/dashboard");

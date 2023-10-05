@@ -6,9 +6,17 @@ const AuthContext = createContext();
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [token, setToken_] = useState(localStorage.getItem("token"));
+  const [authenticated, setAuthenticated_] = useState(false);
 
   const setToken = (authToken) => {
     setToken_(authToken);
+  };
+
+  const setAuthenticated = (httpStatusCode) => {
+    if (httpStatusCode === 401) {
+      return setAuthenticated_(false);
+    }
+    return setAuthenticated_(true);
   };
 
   useEffect(() => {
@@ -25,8 +33,10 @@ const AuthProvider = ({ children }) => {
     () => ({
       token,
       setToken,
+      authenticated,
+      setAuthenticated,
     }),
-    [token]
+    [token, authenticated]
   );
 
   return (
