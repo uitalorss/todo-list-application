@@ -1,9 +1,12 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../Contexts/AuthProvider";
+import { Content, DashboardContainer, Header, NewTask } from "./styles";
+import { Tasklist } from "./components/TaskList";
 
 export function Dashboard() {
   const { token, setAuthenticated } = useAuth();
+  const [taskList, setTaskList] = useState([]);
   useEffect(() => {
     async function load() {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -12,16 +15,26 @@ export function Dashboard() {
           "https://todo-list-api-7llo.onrender.com/tasks"
         );
         setAuthenticated(tasks.status);
-        console.log(tasks.data);
+        setTaskList(tasks.data);
+        console.log(tasks);
       } catch (error) {
         console.log(error.response);
       }
     }
     load();
-  });
+  }, []);
   return (
-    <div>
-      <h1>Tô aqui</h1>
-    </div>
+    <DashboardContainer>
+      <Content>
+        <Header>
+          <h3>todo-list</h3>
+        </Header>
+        <NewTask>
+          <input type="text" placeholder="Adicione uma nova tarefa" />
+          <button>Criar</button>
+        </NewTask>
+        <Tasklist tasklist={taskList} />
+      </Content>
+    </DashboardContainer>
   );
 }
