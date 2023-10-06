@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { Content, DashboardContainer, Header, NewTask } from "./styles";
 import { Tasklist } from "./components/TaskList";
+import { useForm } from "react-hook-form";
 
 export function Dashboard() {
   const { token, setAuthenticated } = useAuth();
   const [taskList, setTaskList] = useState([]);
+  const { register, handleSubmit } = useForm();
   useEffect(() => {
     async function load() {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -14,6 +16,7 @@ export function Dashboard() {
         const tasks = await axios.get(
           "https://todo-list-api-7llo.onrender.com/tasks"
         );
+        console.log(tasks.status);
         setAuthenticated(tasks.status);
         setTaskList(tasks.data);
         console.log(tasks);
@@ -60,6 +63,28 @@ export function Dashboard() {
       console.log(error.response);
     }
   }
+
+  async function handleCreateTask(data) {
+    const axiosConfig = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const createTask = await axios.post(
+        "https://todo-list-api-7llo.onrender.com/task",
+        data,
+        axiosConfig
+      );
+      if (createTask.status === 201) {
+        const updateTaskList = [...taskList];
+        updateTaskList.push(createTask.data[0]);
+        setTaskList(updateTaskList);
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  }
   return (
     <DashboardContainer>
       <Content>
@@ -67,8 +92,14 @@ export function Dashboard() {
           <h3>todo-list</h3>
         </Header>
         <NewTask>
-          <input type="text" placeholder="Adicione uma nova tarefa" />
-          <button>Criar</button>
+          <input
+            type="text"
+            placeholder="Adicione uma nova tarefa"
+            {...register("descricao")}
+          />
+          <button onClick={() => handleSubmit(handleCreateTask)()}>
+            Criar
+          </button>
         </NewTask>
         <Tasklist
           tasklist={taskList}
