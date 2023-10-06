@@ -37,6 +37,25 @@ export function Dashboard() {
       console.log(error.response);
     }
   }
+
+  async function handleTaskStatus(taskId) {
+    try {
+      const updateTaskStatus = await axios.patch(
+        `https://todo-list-api-7llo.onrender.com/task/${taskId}`
+      );
+      if (updateTaskStatus.status === 204) {
+        const updateItem = [...taskList];
+        updateItem.map((item) => {
+          if (item.id === taskId) {
+            item.status = !item.status;
+          }
+        });
+        setTaskList(updateItem);
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  }
   return (
     <DashboardContainer>
       <Content>
@@ -47,7 +66,11 @@ export function Dashboard() {
           <input type="text" placeholder="Adicione uma nova tarefa" />
           <button>Criar</button>
         </NewTask>
-        <Tasklist tasklist={taskList} handleDeleteTask={handleDeleteTask} />
+        <Tasklist
+          tasklist={taskList}
+          handleDeleteTask={handleDeleteTask}
+          handleTaskStatus={handleTaskStatus}
+        />
       </Content>
     </DashboardContainer>
   );
