@@ -29,11 +29,13 @@ export function Dashboard() {
       const deleteItem = await axios.delete(
         `https://todo-list-api-7llo.onrender.com/task/${taskId}`
       );
+      setAuthenticated(deleteItem.status);
       if (deleteItem.status === 204) {
         setTaskList(taskList.filter((item) => item.id !== taskId));
       }
       return console.log(deleteItem);
     } catch (error) {
+      setAuthenticated(error.response.status);
       console.log(error.response);
     }
   }
@@ -43,6 +45,7 @@ export function Dashboard() {
       const updateTaskStatus = await axios.patch(
         `https://todo-list-api-7llo.onrender.com/task/${taskId}`
       );
+      setAuthenticated(updateTaskStatus.status);
       if (updateTaskStatus.status === 204) {
         const updateItem = [...taskList];
         updateItem.map((item) => {
@@ -53,6 +56,7 @@ export function Dashboard() {
         setTaskList(updateItem);
       }
     } catch (error) {
+      setAuthenticated(error.response.status);
       console.log(error.response);
     }
   }
