@@ -17,17 +17,20 @@ export const Header = styled.header`
 
 export const Content = styled.div`
   margin: 0 auto;
+  width: 780px;
 `;
 
 export const NewTask = styled.section`
   display: flex;
   justify-content: center;
   margin-top: -1.5rem;
+  margin-bottom: 4rem;
   gap: 1rem;
 
   input {
+    font-size: 1rem;
     padding: 1rem;
-    width: 40%;
+    width: 100%;
     background: #262626;
     border: none;
     outline: none;
@@ -40,13 +43,15 @@ export const NewTask = styled.section`
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    padding: 1rem;
+    padding: 1rem 1.25rem;
     background: #1e6f9f;
     border: none;
     border-radius: 8px;
     color: #f2f2f2;
     font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
+
     transition: background-color 0.1s;
   }
 `;

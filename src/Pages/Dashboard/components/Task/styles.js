@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ListItem = styled.li`
-  width: 720px;
+  width: 100%;
   list-style: none;
   background: #262626;
   padding: 1rem;

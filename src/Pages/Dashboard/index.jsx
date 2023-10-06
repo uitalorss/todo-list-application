@@ -1,14 +1,17 @@
 import axios from "axios";
+import logo from "../../../assets/logo.svg";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { Content, DashboardContainer, Header, NewTask } from "./styles";
 import { Tasklist } from "./components/TaskList";
 import { useForm } from "react-hook-form";
+import { PlusCircle } from "phosphor-react";
 
 export function Dashboard() {
   const { token, setAuthenticated } = useAuth();
-  const [taskList, setTaskList] = useState([]);
   const { register, handleSubmit } = useForm();
+  const [taskList, setTaskList] = useState([]);
+
   useEffect(() => {
     async function load() {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -64,7 +67,7 @@ export function Dashboard() {
     }
   }
 
-  async function handleCreateTask(data) {
+  async function handleCreateTask(data, e) {
     const axiosConfig = {
       headers: {
         "Content-Type": "application/json",
@@ -82,15 +85,18 @@ export function Dashboard() {
         setTaskList(updateTaskList);
       }
     } catch (error) {
+      if (error.response.status === 400) {
+        alert(error.response.data.message);
+      }
       console.log(error.response);
     }
   }
   return (
     <DashboardContainer>
+      <Header>
+        <img src={logo} alt="" />
+      </Header>
       <Content>
-        <Header>
-          <h3>todo-list</h3>
-        </Header>
         <NewTask>
           <input
             type="text"
@@ -98,7 +104,7 @@ export function Dashboard() {
             {...register("descricao")}
           />
           <button onClick={() => handleSubmit(handleCreateTask)()}>
-            Criar
+            Criar <PlusCircle size={24} />
           </button>
         </NewTask>
         <Tasklist
