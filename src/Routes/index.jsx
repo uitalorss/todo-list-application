@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Login } from "../Pages/Login";
 import { SignUp } from "../Pages/SignUp";
 import { ProtectedRoute } from "./ProtectedRoute";
+import { TaskDetails } from "../Pages/TaskDetails";
 
 export function Routes() {
   const routesForPublic = [
@@ -20,6 +21,7 @@ export function Routes() {
       path: "/dashboard",
       element: <ProtectedRoute />,
     },
+    { path: "/details", element: <TaskDetails /> },
   ];
 
   const router = createBrowserRouter([
