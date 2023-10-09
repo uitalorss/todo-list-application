@@ -21,7 +21,7 @@ export function Routes() {
       path: "/dashboard",
       element: <ProtectedRoute />,
     },
-    { path: "/details", element: <TaskDetails /> },
+    { path: "/dashboard/:taskId", element: <TaskDetails /> },
   ];
 
   const router = createBrowserRouter([

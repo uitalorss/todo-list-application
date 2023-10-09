@@ -6,7 +6,7 @@ export const ListItem = styled.li`
   background: #262626;
   padding: 1rem;
   display: grid;
-  grid-template-columns: 1fr 600px 1fr;
+  grid-template-columns: 1fr 600px 1fr 1fr;
   align-items: center;
   gap: 1rem;
   border: 1px solid #333333;
@@ -18,6 +18,7 @@ export const ListItem = styled.li`
     background: transparent;
     border: none;
     outline: none;
+    color: #808080;
     cursor: pointer;
     &.check {
       color: #4ea8de;

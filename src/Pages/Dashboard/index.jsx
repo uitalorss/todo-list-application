@@ -19,10 +19,8 @@ export function Dashboard() {
         const tasks = await axios.get(
           "https://todo-list-api-7llo.onrender.com/tasks"
         );
-        console.log(tasks.status);
         setAuthenticated(tasks.status);
         setTaskList(tasks.data);
-        console.log(tasks);
       } catch (error) {
         console.log(error.response);
       }
@@ -67,7 +65,7 @@ export function Dashboard() {
     }
   }
 
-  async function handleCreateTask(data, e) {
+  async function handleCreateTask(data) {
     const axiosConfig = {
       headers: {
         "Content-Type": "application/json",
@@ -91,6 +89,11 @@ export function Dashboard() {
       console.log(error.response);
     }
   }
+
+  function handleDetailTask(taskId) {
+    return taskId;
+  }
+
   return (
     <DashboardContainer>
       <Header>
@@ -111,6 +114,7 @@ export function Dashboard() {
           tasklist={taskList}
           handleDeleteTask={handleDeleteTask}
           handleTaskStatus={handleTaskStatus}
+          handleDetailTask={handleDetailTask}
         />
       </Content>
     </DashboardContainer>
