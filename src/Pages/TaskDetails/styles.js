@@ -5,4 +5,9 @@ export const TaskDetailContainer = styled(ListItem)`
   padding: 1.5rem;
   margin-top: 3rem;
   grid-template-columns: 1fr 600px 1fr 1fr;
+  input {
+    background: none;
+    border: none;
+    color: #808080;
+  }
 `;

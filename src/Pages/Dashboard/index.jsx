@@ -89,11 +89,6 @@ export function Dashboard() {
       console.log(error.response);
     }
   }
-
-  function handleDetailTask(taskId) {
-    return taskId;
-  }
-
   return (
     <DashboardContainer>
       <Header>
@@ -114,7 +109,6 @@ export function Dashboard() {
           tasklist={taskList}
           handleDeleteTask={handleDeleteTask}
           handleTaskStatus={handleTaskStatus}
-          handleDetailTask={handleDetailTask}
         />
       </Content>
     </DashboardContainer>
