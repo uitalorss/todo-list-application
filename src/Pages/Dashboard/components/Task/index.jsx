@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { ListItem } from "./styles";
 import { Circle, CheckCircle, Trash, Pencil } from "phosphor-react";
-export function Task({ task, handleDeleteTask, handleTaskStatus }) {
+import { useTask } from "../../../../Contexts/TaskProvider";
+
+export function Task({ task }) {
   const navigate = useNavigate();
+  const { handleDeleteTask, handleTaskStatus } = useTask();
 
   return (
     <ListItem className={task.status ? "checked" : "noChecked"}>

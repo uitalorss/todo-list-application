@@ -1,12 +1,15 @@
 import { GlobalStyled } from "./styles/global";
 import AuthProvider from "./Contexts/AuthProvider";
 import { Routes } from "./Routes";
+import { TaskProvider } from "./Contexts/TaskProvider";
 
 function App() {
   return (
     <AuthProvider>
-      <Routes />
-      <GlobalStyled />
+      <TaskProvider>
+        <Routes />
+        <GlobalStyled />
+      </TaskProvider>
     </AuthProvider>
   );
 }

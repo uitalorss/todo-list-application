@@ -2,7 +2,7 @@ import { ClipboardText } from "phosphor-react";
 import { Task } from "../Task";
 import { CountersContainer, ListContainer, NoTaskContainer } from "./styles";
 
-export function Tasklist({ tasklist, handleDeleteTask, handleTaskStatus }) {
+export function Tasklist({ tasklist }) {
   return (
     <div>
       <CountersContainer>
@@ -13,14 +13,7 @@ export function Tasklist({ tasklist, handleDeleteTask, handleTaskStatus }) {
       {tasklist.length !== 0 ? (
         <ListContainer>
           {tasklist.map((item) => {
-            return (
-              <Task
-                key={item.id}
-                task={item}
-                handleDeleteTask={handleDeleteTask}
-                handleTaskStatus={handleTaskStatus}
-              />
-            );
+            return <Task key={item.id} task={item} />;
           })}
         </ListContainer>
       ) : (

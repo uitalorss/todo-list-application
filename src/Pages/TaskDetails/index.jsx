@@ -4,11 +4,15 @@ import { TaskDetailContainer } from "./styles";
 import logo from "../../../assets/logo.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { useForm } from "react-hook-form";
+import { useTask } from "../../Contexts/TaskProvider";
 
 export function TaskDetails() {
+  const { taskId } = useParams();
+  const { handleUpdateTask } = useTask();
+
   const [task, setTask] = useState({
     id: "",
     description: "",
@@ -17,10 +21,11 @@ export function TaskDetails() {
     created_at: "",
   });
   const { token, setAuthenticated } = useAuth();
-  const { register, handleSubmit } = useForm();
-  const navigate = useNavigate();
-
-  const { taskId } = useParams();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      id: taskId,
+    },
+  });
 
   useEffect(() => {
     async function load() {
@@ -37,29 +42,6 @@ export function TaskDetails() {
     }
     load();
   }, []);
-
-  async function handleUpdateTask(data) {
-    const axiosConfig = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    try {
-      const updateTaskDescription = await axios.put(
-        `https://todo-list-api-7llo.onrender.com/task/${taskId}`,
-        data,
-        axiosConfig
-      );
-      setAuthenticated(updateTaskDescription.status);
-      if (updateTaskDescription.status === 204) {
-        alert("Tarefa atualizada com sucesso!!");
-        navigate("/dashboard");
-      }
-    } catch (error) {
-      setAuthenticated(error.response.status);
-      console.log(error.response);
-    }
-  }
 
   return (
     <DashboardContainer>
