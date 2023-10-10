@@ -11,6 +11,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useAuth } from "../../hooks/UseAuth";
 import { DefaultButton } from "../../styles/global";
+import { motion } from "framer-motion";
 
 export function Login() {
   const { register, handleSubmit } = useForm();
@@ -42,41 +43,47 @@ export function Login() {
   };
 
   return (
-    <HomeContainer>
-      <ContentContainer>
-        <header>
-          <h3>Acesse a plataforma</h3>
-          <p>
-            Faça o login ou <Link to="/signup">registre-se</Link> para começar a
-            organizar a sua vida.
-          </p>
-        </header>
-        <div className="form">
-          <FormGroup>
-            <label htmlFor="">E-mail</label>
-            <input
-              type="text"
-              {...register("email")}
-              placeholder="digite o seu e-mail"
-            />
-          </FormGroup>
-          <FormGroup>
-            <label htmlFor="">Senha</label>
-            <input
-              type="password"
-              {...register("senha")}
-              placeholder="Digite a sua senha"
-            />
-          </FormGroup>
-        </div>
-        <DefaultButton onClick={() => handleSubmit(onsubmit)()} type="submit">
-          Login
-        </DefaultButton>
-        <SpanError className={errorMessage === "" ? "" : "active"}>
-          {errorMessage}
-        </SpanError>
-      </ContentContainer>
-      <img src={bg} alt="" />
-    </HomeContainer>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.outerWidth }}
+    >
+      <HomeContainer>
+        <ContentContainer>
+          <header>
+            <h3>Acesse a plataforma</h3>
+            <p>
+              Faça o login ou <Link to="/signup">registre-se</Link> para começar
+              a organizar a sua vida.
+            </p>
+          </header>
+          <div className="form">
+            <FormGroup>
+              <label htmlFor="">E-mail</label>
+              <input
+                type="text"
+                {...register("email")}
+                placeholder="digite o seu e-mail"
+              />
+            </FormGroup>
+            <FormGroup>
+              <label htmlFor="">Senha</label>
+              <input
+                type="password"
+                {...register("senha")}
+                placeholder="Digite a sua senha"
+              />
+            </FormGroup>
+          </div>
+          <DefaultButton onClick={() => handleSubmit(onsubmit)()} type="submit">
+            Login
+          </DefaultButton>
+          <SpanError className={errorMessage === "" ? "" : "active"}>
+            {errorMessage}
+          </SpanError>
+        </ContentContainer>
+        <img src={bg} alt="" />
+      </HomeContainer>
+    </motion.div>
   );
 }
