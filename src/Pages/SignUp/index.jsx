@@ -1,5 +1,4 @@
 import {
-  ButtonLogin,
   ContentContainer,
   FormGroup,
   HomeContainer,
@@ -7,9 +6,10 @@ import {
 } from "./styles";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
-import bg from "../../../assets/bg.png";
+import bg from "../../../assets/bg-signup.png";
 import axios from "axios";
 import { useState } from "react";
+import { DefaultButton } from "../../styles/global";
 
 export function SignUp() {
   const { register, handleSubmit } = useForm();
@@ -79,9 +79,9 @@ export function SignUp() {
             />
           </FormGroup>
         </div>
-        <ButtonLogin onClick={() => handleSubmit(onsubmit)()} type="submit">
+        <DefaultButton onClick={() => handleSubmit(onsubmit)()} type="submit">
           Cadastrar
-        </ButtonLogin>
+        </DefaultButton>
         <SpanError className={errorMessage === "" ? "" : "active"}>
           {errorMessage}
         </SpanError>

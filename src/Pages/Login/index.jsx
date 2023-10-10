@@ -1,5 +1,4 @@
 import {
-  ButtonLogin,
   ContentContainer,
   FormGroup,
   HomeContainer,
@@ -11,6 +10,7 @@ import bg from "../../../assets/bg.png";
 import axios from "axios";
 import { useState } from "react";
 import { useAuth } from "../../hooks/UseAuth";
+import { DefaultButton } from "../../styles/global";
 
 export function Login() {
   const { register, handleSubmit } = useForm();
@@ -69,9 +69,9 @@ export function Login() {
             />
           </FormGroup>
         </div>
-        <ButtonLogin onClick={() => handleSubmit(onsubmit)()} type="submit">
+        <DefaultButton onClick={() => handleSubmit(onsubmit)()} type="submit">
           Login
-        </ButtonLogin>
+        </DefaultButton>
         <SpanError className={errorMessage === "" ? "" : "active"}>
           {errorMessage}
         </SpanError>
