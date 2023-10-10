@@ -1,6 +1,6 @@
 import axios from "axios";
-import { createContext, useContext, useMemo, useState } from "react";
-import { useAuth } from "./AuthProvider";
+import { createContext, useMemo, useState } from "react";
+import { useAuth } from "../hooks/UseAuth";
 
 export const TaskContext = createContext();
 
@@ -114,8 +114,4 @@ export const TaskProvider = ({ children }) => {
   return (
     <TaskContext.Provider value={requestValue}>{children}</TaskContext.Provider>
   );
-};
-
-export const useTask = () => {
-  return useContext(TaskContext);
 };

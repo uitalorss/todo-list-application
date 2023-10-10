@@ -5,9 +5,9 @@ import logo from "../../../assets/logo.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useAuth } from "../../Contexts/AuthProvider";
 import { useForm } from "react-hook-form";
-import { useTask } from "../../Contexts/TaskProvider";
+import { useTask } from "../../hooks/UseTask";
+import { useAuth } from "../../hooks/UseAuth";
 
 export function TaskDetails() {
   const { taskId } = useParams();

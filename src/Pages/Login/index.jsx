@@ -10,7 +10,7 @@ import { useNavigate, Link } from "react-router-dom";
 import bg from "../../../assets/bg.png";
 import axios from "axios";
 import { useState } from "react";
-import { useAuth } from "../../Contexts/AuthProvider";
+import { useAuth } from "../../hooks/UseAuth";
 
 export function Login() {
   const { register, handleSubmit } = useForm();

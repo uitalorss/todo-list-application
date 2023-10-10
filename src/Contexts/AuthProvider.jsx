@@ -1,12 +1,11 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [token, setToken_] = useState(localStorage.getItem("token"));
-  const [word, setWord] = useState("banana");
 
   const [authenticated, setAuthenticated_] = useState(true);
 
@@ -34,19 +33,13 @@ const AuthProvider = ({ children }) => {
       setToken,
       authenticated,
       setAuthenticated,
-      word,
-      setWord,
     }),
-    [token, authenticated, word]
+    [token, authenticated]
   );
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
-};
-
-export const useAuth = () => {
-  return useContext(AuthContext);
 };
 
 export default AuthProvider;

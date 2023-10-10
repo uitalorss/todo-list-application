@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { PlusCircle } from "phosphor-react";
 import { useEffect } from "react";
 import axios from "axios";
-import { useAuth } from "../../Contexts/AuthProvider";
-import { useTask } from "../../Contexts/TaskProvider";
+import { useTask } from "../../hooks/UseTask";
+import { useAuth } from "../../hooks/UseAuth";
 
 export function Dashboard() {
   const { register, handleSubmit } = useForm();

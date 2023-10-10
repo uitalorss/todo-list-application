@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ListItem } from "./styles";
 import { Circle, CheckCircle, Trash, Pencil } from "phosphor-react";
-import { useTask } from "../../../../Contexts/TaskProvider";
+import { useTask } from "../../../../hooks/UseTask";
 
 export function Task({ task }) {
   const navigate = useNavigate();
