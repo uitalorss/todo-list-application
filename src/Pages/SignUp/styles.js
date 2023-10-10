@@ -10,6 +10,13 @@ export const HomeContainer = styled.div`
     height: 100vh;
     width: 100%;
   }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    height: 100vh;
+    img {
+      display: none;
+    }
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -35,6 +42,12 @@ export const ContentContainer = styled.div`
     gap: 1rem;
     margin-bottom: 2.5rem;
   }
+  @media (max-width: 480px) {
+    max-width: 100vw;
+    width: 85%;
+    padding: 0 1rem;
+    margin: 1rem 2rem;
+  }
 `;
 
 export const FormGroup = styled.div`
@@ -50,13 +63,9 @@ export const FormGroup = styled.div`
     border-radius: 10px;
     border: 1px solid #c0c0c0;
   }
-`;
-
-export const ButtonLogin = styled.button`
-  width: 70%;
-  padding: 1rem 0.75rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const SpanError = styled.span`
@@ -67,5 +76,8 @@ export const SpanError = styled.span`
     color: #c0392b;
     border-radius: 10px;
     text-align: center;
+    @media (max-width: 480px) {
+      width: 100%;
+    }
   }
 `;
