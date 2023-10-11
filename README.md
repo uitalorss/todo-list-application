@@ -43,9 +43,9 @@ yarn:
 yarn add
 ```
 
-## ☕ Usando DindinAPI
+## ☕ Usando todo-list
 
-Para usar o DindinAPI, siga estas etapas:
+Para usar o todo-list, siga estas etapas:
 
 npm:
 
