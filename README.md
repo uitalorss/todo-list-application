@@ -7,7 +7,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/uitalorss/todo-list-application?style=for-the-badge)
 ![GitHub Contributors](https://img.shields.io/github/contributors/uitalorss/todo-list-application?style=for-the-badge&color=blue)
 
-<img src="exemplo-image.png" alt="exemplo imagem">
+<img src="assets/image-readme.png" alt="exemplo imagem">
 
 > Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
 
