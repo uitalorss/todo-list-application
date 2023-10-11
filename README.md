@@ -9,8 +9,6 @@
 
 <img src="assets/image-readme.png" alt="exemplo imagem">
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
-
 Projeto desenvolvido utilizando usando como motivação incrementar o projeto do módulo 1 da plataforma ignite da [Rocketseat](https://www.rocketseat.com.br/) trazendo, além do desenvolvimento da interface da aplicação, feito com React e styled-components, a conexão com uma API externa [todo-list-api](https://github.com/uitalorss/todo-list-api), cuja documentação [está nesse link](https://dindin-api-azvd.onrender.com/api-docs).
 
 ### Ajustes e melhorias
