@@ -56,7 +56,7 @@ export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 100%;
+  width: 70%;
   label {
     font-weight: 500;
   }

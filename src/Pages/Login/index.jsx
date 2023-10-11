@@ -46,7 +46,7 @@ export function Login() {
     <motion.div
       initial={{ width: 0 }}
       animate={{ width: "100%" }}
-      exit={{ x: window.outerWidth }}
+      exit={{ x: -window.outerWidth }}
     >
       <HomeContainer>
         <ContentContainer>
