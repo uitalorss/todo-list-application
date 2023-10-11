@@ -42,4 +42,8 @@ export const ListItem = styled.li`
     text-decoration: none;
     color: #f2f2f2;
   }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr 6fr 1fr 1fr;
+    padding: 1rem 0.5rem;
+  }
 `;

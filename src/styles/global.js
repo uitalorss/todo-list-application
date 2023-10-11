@@ -39,7 +39,7 @@ export const DefaultButton = styled.button`
   &:hover {
     background: #8284fa;
   }
-  @media (max-width: 480px) {
+  @media (max-width: 820px) {
     width: 100%;
   }
 `;

@@ -18,6 +18,9 @@ export const Header = styled.header`
 export const Content = styled.div`
   margin: 0 auto;
   width: 780px;
+  @media (max-width: 480px) {
+    width: 100vw;
+  }
 `;
 
 export const NewTask = styled.section`
@@ -53,5 +56,20 @@ export const NewTask = styled.section`
     cursor: pointer;
 
     transition: background-color 0.1s;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: calc(100% - 2rem);
+    margin: -2rem 1rem 3rem 1rem;
+
+    input {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
   }
 `;

@@ -1,10 +1,15 @@
 import { ClipboardText } from "phosphor-react";
 import { Task } from "../Task";
-import { CountersContainer, ListContainer, NoTaskContainer } from "./styles";
+import {
+  CountersContainer,
+  ListContainer,
+  NoTaskContainer,
+  TaskListContainer,
+} from "./styles";
 
 export function Tasklist({ tasklist }) {
   return (
-    <div>
+    <TaskListContainer>
       <CountersContainer>
         <strong>
           Tarefas criadas<span>{tasklist.length}</span>
@@ -27,6 +32,6 @@ export function Tasklist({ tasklist }) {
           </NoTaskContainer>
         </div>
       )}
-    </div>
+    </TaskListContainer>
   );
 }

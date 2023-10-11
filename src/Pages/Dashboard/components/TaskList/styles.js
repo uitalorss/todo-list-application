@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const TaskListContainer = styled.div`
+  @media (max-width: 480px) {
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
+  }
+`;
+
 export const ListContainer = styled.div`
   margin-top: 2.5rem;
   display: flex;

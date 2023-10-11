@@ -12,7 +12,7 @@ export const HomeContainer = styled.div`
     width: 100%;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 820px) {
     grid-template-columns: 1fr;
     height: 100vh;
     img {
@@ -44,7 +44,7 @@ export const ContentContainer = styled.div`
     gap: 1rem;
     margin-bottom: 2.5rem;
   }
-  @media (max-width: 480px) {
+  @media (max-width: 820px) {
     max-width: 100vw;
     width: 85%;
     padding: 0 1rem;
@@ -65,7 +65,7 @@ export const FormGroup = styled.div`
     border-radius: 10px;
     border: 1px solid #c0c0c0;
   }
-  @media (max-width: 480px) {
+  @media (max-width: 820px) {
     width: 100%;
   }
 `;
@@ -78,7 +78,7 @@ export const SpanError = styled.span`
     color: #c0392b;
     border-radius: 10px;
     text-align: center;
-    @media (max-width: 480px) {
+    @media (max-width: 820px) {
       width: 100%;
     }
   }
